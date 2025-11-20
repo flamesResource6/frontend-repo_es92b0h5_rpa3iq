@@ -13,20 +13,21 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur bg-white/70 border-b border-slate-200">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-emerald-400 via-sky-400 to-violet-400 opacity-70" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <a href="#" className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-md bg-emerald-600 text-white flex items-center justify-center font-bold">PE</div>
+            <div className="w-9 h-9 rounded-md bg-gradient-to-br from-emerald-600 to-sky-600 text-white flex items-center justify-center font-bold shadow-sm">PE</div>
             <div className="text-slate-900 font-semibold">Priceless Energy LTD</div>
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <a key={item.label} href={item.href} className="text-slate-700 hover:text-emerald-700 transition-colors">
+              <a key={item.label} href={item.href} className="text-slate-700 hover:text-emerald-700 hover:-translate-y-0.5 transition-all">
                 {item.label}
               </a>
             ))}
-            <a href="#appointment" className="inline-flex items-center rounded-md bg-emerald-600 px-4 py-2 text-white font-medium hover:bg-emerald-700 transition-colors">Book a Survey</a>
+            <a href="#appointment" className="inline-flex items-center rounded-md bg-gradient-to-r from-emerald-600 to-sky-600 px-4 py-2 text-white font-medium shadow hover:shadow-md transition-all">Book a Survey</a>
           </nav>
 
           <button aria-label="Menu" className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-slate-300 text-slate-700" onClick={() => setOpen(!open)}>
@@ -38,7 +39,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-slate-200 bg-white">
+        <div className="md:hidden border-t border-slate-200 bg-white/90 backdrop-blur">
           <div className="px-4 py-3 space-y-2">
             {navItems.map((item) => (
               <a key={item.label} href={item.href} className="block py-2 text-slate-700" onClick={() => setOpen(false)}>

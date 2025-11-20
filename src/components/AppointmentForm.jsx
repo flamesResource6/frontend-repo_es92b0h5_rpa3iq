@@ -26,7 +26,7 @@ export default function AppointmentForm() {
       })
 
       if (!res.ok) throw new Error(`Request failed: ${res.status}`)
-      const data = await res.json()
+      await res.json()
       setStatus({ state: 'success', message: 'Thanks! We will contact you shortly.' })
       setForm({ name: '', email: '', phone: '', service: '', datetime: '', location: '', message: '' })
     } catch (err) {
@@ -54,23 +54,24 @@ export default function AppointmentForm() {
             </div>
           </div>
 
-          <form onSubmit={submit} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <form onSubmit={submit} className="relative bg-white/95 p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4 overflow-hidden">
+            <div className="absolute inset-0 -z-10 opacity-25 bg-[radial-gradient(60%_60%_at_10%_-10%,#34d399,transparent_60%),radial-gradient(40%_40%_at_100%_110%,#38bdf8,transparent_60%)]" />
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm text-slate-700 mb-1">Name</label>
-                <input required value={form.name} onChange={e=>setForm({...form, name:e.target.value})} className="w-full rounded-md border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                <input required value={form.name} onChange={e=>setForm({...form, name:e.target.value})} className="w-full rounded-md border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white/80" />
               </div>
               <div>
                 <label className="block text-sm text-slate-700 mb-1">Email*</label>
-                <input type="email" required value={form.email} onChange={e=>setForm({...form, email:e.target.value})} className="w-full rounded-md border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                <input type="email" required value={form.email} onChange={e=>setForm({...form, email:e.target.value})} className="w-full rounded-md border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white/80" />
               </div>
               <div>
                 <label className="block text-sm text-slate-700 mb-1">Phone Number</label>
-                <input value={form.phone} onChange={e=>setForm({...form, phone:e.target.value})} className="w-full rounded-md border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                <input value={form.phone} onChange={e=>setForm({...form, phone:e.target.value})} className="w-full rounded-md border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white/80" />
               </div>
               <div>
                 <label className="block text-sm text-slate-700 mb-1">Service</label>
-                <select value={form.service} onChange={e=>setForm({...form, service:e.target.value})} className="w-full rounded-md border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                <select value={form.service} onChange={e=>setForm({...form, service:e.target.value})} className="w-full rounded-md border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white/80">
                   <option value="">Select a service</option>
                   {['Loft Insulation','Internal Wall Insulation','Room in Roof Insulation','Boiler Replacement','Plumbing Services','Emergency Plumbing'].map(s => (
                     <option key={s} value={s}>{s}</option>
@@ -79,19 +80,19 @@ export default function AppointmentForm() {
               </div>
               <div>
                 <label className="block text-sm text-slate-700 mb-1">Date & Time</label>
-                <input type="datetime-local" value={form.datetime} onChange={e=>setForm({...form, datetime:e.target.value})} className="w-full rounded-md border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                <input type="datetime-local" value={form.datetime} onChange={e=>setForm({...form, datetime:e.target.value})} className="w-full rounded-md border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white/80" />
               </div>
               <div>
                 <label className="block text-sm text-slate-700 mb-1">Location</label>
-                <input value={form.location} onChange={e=>setForm({...form, location:e.target.value})} className="w-full rounded-md border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                <input value={form.location} onChange={e=>setForm({...form, location:e.target.value})} className="w-full rounded-md border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white/80" />
               </div>
             </div>
             <div>
               <label className="block text-sm text-slate-700 mb-1">Message*</label>
-              <textarea required rows="4" value={form.message} onChange={e=>setForm({...form, message:e.target.value})} className="w-full rounded-md border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+              <textarea required rows="4" value={form.message} onChange={e=>setForm({...form, message:e.target.value})} className="w-full rounded-md border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white/80" />
             </div>
 
-            <button disabled={status.state==='loading'} className="w-full rounded-md bg-emerald-600 text-white py-3 font-semibold hover:bg-emerald-700 disabled:opacity-60">
+            <button disabled={status.state==='loading'} className="w-full rounded-md bg-gradient-to-r from-emerald-600 to-sky-600 text-white py-3 font-semibold shadow hover:shadow-md disabled:opacity-60">
               {status.state === 'loading' ? 'Submitting...' : 'Confirm appointment'}
             </button>
 

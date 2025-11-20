@@ -36,9 +36,10 @@ export default function Services() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
-            <div key={i} className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition">
+            <div key={i} className="relative rounded-2xl p-5 shadow-sm hover:shadow-lg transition-all border border-slate-200 bg-white/90">
+              <div className="absolute inset-0 -z-10 rounded-2xl opacity-30 bg-[conic-gradient(at_30%_20%,#34d399,transparent_30%,#38bdf8_55%,transparent_70%,#a78bfa_90%)]" />
               <div className="font-semibold text-slate-900">{s.title}</div>
-              <p className="text-slate-600 text-sm mt-2">{s.text}</p>
+              <p className="text-slate-700 text-sm mt-2">{s.text}</p>
             </div>
           ))}
         </div>

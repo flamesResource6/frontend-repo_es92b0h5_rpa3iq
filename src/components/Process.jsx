@@ -18,7 +18,7 @@ export default function Process() {
   ]
 
   return (
-    <section id="process" className="py-16 lg:py-24 bg-slate-50">
+    <section id="process" className="py-16 lg:py-24 bg-gradient-to-b from-white via-sky-50/60 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">We Offer Professional Insulation, Heating & Plumbing Services</h2>
@@ -27,10 +27,11 @@ export default function Process() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {steps.map((s, i) => (
-            <div key={i} className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+            <div key={i} className="relative rounded-2xl p-6 shadow-sm border border-slate-200 bg-white/90 hover:shadow-lg transition">
+              <div className="absolute inset-0 -z-10 rounded-2xl opacity-20 bg-[radial-gradient(60%_60%_at_20%_-10%,#34d399,transparent_60%),radial-gradient(35%_35%_at_90%_-10%,#38bdf8,transparent_65%)]" />
               <div className="text-emerald-700 font-semibold">{s.step}</div>
               <div className="text-slate-900 font-semibold mt-1">{s.title}</div>
-              <p className="text-slate-600 text-sm mt-2">{s.text}</p>
+              <p className="text-slate-700 text-sm mt-2">{s.text}</p>
             </div>
           ))}
         </div>
